@@ -1,0 +1,10 @@
+D:\vscode\Purole\Tic-Tac-Toe Game\bin\Debug\Tic-Tac-Toe Game.exe.config
+D:\vscode\Purole\Tic-Tac-Toe Game\bin\Debug\Tic-Tac-Toe Game.exe
+D:\vscode\Purole\Tic-Tac-Toe Game\bin\Debug\Tic-Tac-Toe Game.pdb
+D:\vscode\Purole\Tic-Tac-Toe Game\obj\Debug\Tic-Tac-Toe Game.csproj.AssemblyReference.cache
+D:\vscode\Purole\Tic-Tac-Toe Game\obj\Debug\Tic_Tac_Toe_Game.FmMain.resources
+D:\vscode\Purole\Tic-Tac-Toe Game\obj\Debug\Tic_Tac_Toe_Game.Properties.Resources.resources
+D:\vscode\Purole\Tic-Tac-Toe Game\obj\Debug\Tic-Tac-Toe Game.csproj.GenerateResource.cache
+D:\vscode\Purole\Tic-Tac-Toe Game\obj\Debug\Tic-Tac-Toe Game.csproj.CoreCompileInputs.cache
+D:\vscode\Purole\Tic-Tac-Toe Game\obj\Debug\Tic-Tac-Toe Game.exe
+D:\vscode\Purole\Tic-Tac-Toe Game\obj\Debug\Tic-Tac-Toe Game.pdb
