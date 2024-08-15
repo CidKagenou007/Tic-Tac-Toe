@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -34,40 +35,29 @@ namespace Tic_Tac_Toe_Game
 
         }
 
+        void ResetPictureBox(PictureBox pb)
+        {
+
+            pb.Image = Resources.question_mark_96;
+            pb.BackColor = Color.Black;
+            pb.Tag = 0;
+        }
+
         void Restart()
         {
 
-            pb1.Image = Resources.question_mark_96;
-            pb2.Image = Resources.question_mark_96;
-            pb3.Image = Resources.question_mark_96;
-            pb4.Image = Resources.question_mark_96;
-            pb5.Image = Resources.question_mark_96;
-            pb6.Image = Resources.question_mark_96;
-            pb7.Image = Resources.question_mark_96;
-            pb8.Image = Resources.question_mark_96;
-            pb9.Image = Resources.question_mark_96;
+            ResetPictureBox(pb1);
+            ResetPictureBox(pb2);
+            ResetPictureBox(pb3);
+            ResetPictureBox(pb4);
+            ResetPictureBox(pb5);
+            ResetPictureBox(pb6);
+            ResetPictureBox(pb7);
+            ResetPictureBox(pb8);
+            ResetPictureBox(pb9);
 
-            pb1.Tag = 0;
-            pb2.Tag = 0;
-            pb3.Tag = 0;
-            pb4.Tag = 0;
-            pb5.Tag = 0;
-            pb6.Tag = 0;
-            pb7.Tag = 0;
-            pb8.Tag = 0;
-            pb9.Tag = 0;
 
             lbWinner.Tag = 0;
-
-            pb1.BackColor = Color.Black;
-            pb2.BackColor = Color.Black;
-            pb3.BackColor = Color.Black;
-            pb4.BackColor = Color.Black;
-            pb5.BackColor = Color.Black;
-            pb6.BackColor = Color.Black;
-            pb7.BackColor = Color.Black;
-            pb8.BackColor = Color.Black;
-            pb9.BackColor = Color.Black;
 
 
             lbPlayer.Text = "Player  1" ;
@@ -82,89 +72,53 @@ namespace Tic_Tac_Toe_Game
                 (Convert.ToInt16(pb7.Tag) != 0) && (Convert.ToInt16(pb8.Tag) != 0) && (Convert.ToInt16(pb9.Tag) != 0));
         }
 
-        void CheckWinner(short Index)
+        bool CheckValue(PictureBox pb1 , PictureBox pb2 , PictureBox pb3)
+        {
+            if (Convert.ToInt16(pb1.Tag) != 0 && Convert.ToInt16(pb1.Tag) ==
+                Convert.ToInt16(pb2.Tag) && Convert.ToInt16(pb2.Tag) == Convert.ToInt16(pb3.Tag) {
+
+                pb1.BackColor = Color.Green;
+                pb2.BackColor = Color.Green;
+                pb3.BackColor = Color.Green;
+                
+
+                lbWinner.Text = pb1.Tag.ToString();
+
+                return true;
+                
+
+            }
+
+            return false;
+        }
+
+        void CheckWinner()
         {
 
-            if (Convert.ToInt16(pb1.Tag) == Index && Convert.ToInt16(pb2.Tag) == Index &&
-                Convert.ToInt16(pb3.Tag) == Index)
-            {
-                pb1.BackColor = Color.Green;
-                pb2.BackColor = Color.Green;
-                pb3.BackColor = Color.Green;
-                lbWinner.Tag = Index;
-                return;
-            }
-
-            if ((Convert.ToInt16(pb1.Tag) == Index && Convert.ToInt16(pb4.Tag) == Index &&
-                Convert.ToInt16(pb7.Tag) == Index))
-            {
-                pb1.BackColor = Color.Green;
-                pb4.BackColor = Color.Green;
-                pb7.BackColor = Color.Green;
-                lbWinner.Tag = Index;
-                return;
-            }
-
-            if (Convert.ToInt16(pb2.Tag) == Index && Convert.ToInt16(pb5.Tag) == Index &&
-                Convert.ToInt16(pb8.Tag) == Index)
-            {
-                pb2.BackColor = Color.Green;
-                pb5.BackColor = Color.Green;
-                pb8.BackColor = Color.Green;
-                lbWinner.Tag = Index;
-                return;
-            }
-
-            if (Convert.ToInt16(pb3.Tag) == Index && Convert.ToInt16(pb6.Tag) == Index &&
-                Convert.ToInt16(pb9.Tag) == Index)
-            {
-                pb3.BackColor = Color.Green;
-                pb6.BackColor = Color.Green;
-                pb9.BackColor = Color.Green;
-                lbWinner.Tag = Index;
-                return;
-            }
-
-            if (Convert.ToInt16(pb1.Tag) == Index && Convert.ToInt16(pb5.Tag) == Index &&
-                Convert.ToInt16(pb9.Tag) == Index)
-            {
-                pb1.BackColor = Color.Green;
-                pb5.BackColor = Color.Green;
-                pb9.BackColor = Color.Green;
-                lbWinner.Tag = Index;
-                return;
-            }
-
-            if (Convert.ToInt16(pb3.Tag) == Index && Convert.ToInt16(pb5.Tag) == Index &&
-                Convert.ToInt16(pb7.Tag) == Index) {
-
-                pb3.BackColor = Color.Green;
-                pb5.BackColor = Color.Green;
-                pb7.BackColor = Color.Green;
-                lbWinner.Tag = Index;
-                return;
-            }
-
-            if (Convert.ToInt16(pb4.Tag) == Index && Convert.ToInt16(pb5.Tag) == Index &&
-                Convert.ToInt16(pb6.Tag) == Index)
-            {
-                pb4.BackColor = Color.Green;
-                pb5.BackColor = Color.Green;
-                pb6.BackColor = Color.Green;
-                lbWinner.Tag = Index;
-                return;
-            }
-
-            if (Convert.ToInt16(pb7.Tag) == Index && Convert.ToInt16(pb8.Tag) == Index &&
-                Convert.ToInt16(pb9.Tag) == Index)
-            {
-                pb7.BackColor = Color.Green;
-                pb8.BackColor = Color.Green;
-                pb9.BackColor = Color.Green;
-                lbWinner.Tag = Index;
+            if (CheckValue(pb1 , pb2 , pb3))
                 return;
 
-            }
+            if (CheckValue(pb1, pb4, pb7))
+                return;
+
+
+            if (CheckValue(pb2, pb5, pb8))
+                return;
+
+            if (CheckValue(pb3, pb6, pb9))
+                return;
+
+            if (CheckValue(pb1, pb5, pb9))
+                return;
+
+            if (CheckValue(pb3, pb5, pb7))
+                return;
+
+            if (CheckValue(pb4, pb5, pb6))
+                return;
+
+            if (CheckValue(pb7, pb8, pb9))
+                return;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -184,7 +138,7 @@ namespace Tic_Tac_Toe_Game
                     ((PictureBox)sender).Image = Resources.X;
                     ((PictureBox)sender).Tag = 1;
 
-                    CheckWinner(1);
+                    CheckWinner();
 
                     if (Convert.ToInt16(lbWinner.Tag) == 1)
                     {
@@ -204,7 +158,7 @@ namespace Tic_Tac_Toe_Game
                     ((PictureBox)sender).Image = Resources.O;
                     ((PictureBox)sender).Tag = 2;
 
-                    CheckWinner(2);
+                    CheckWinner();
 
                     if (Convert.ToInt16(lbWinner.Tag) == 2)
                     {
@@ -227,49 +181,10 @@ namespace Tic_Tac_Toe_Game
             }
         }
 
-        private void pb1_Click(object sender, EventArgs e)
+        private void pb_Click(object sender, EventArgs e)
         {
             UpdateGame(sender);
         }
 
-        private void pb2_Click(object sender, EventArgs e)
-        {
-            UpdateGame(sender);
-        }
-
-        private void pb3_Click(object sender, EventArgs e)
-        {
-            UpdateGame(sender);
-        }
-
-        private void pb4_Click(object sender, EventArgs e)
-        {
-            UpdateGame(sender);
-        }
-
-        private void pb5_Click(object sender, EventArgs e)
-        {
-            UpdateGame(sender);
-        }
-
-        private void pb6_Click(object sender, EventArgs e)
-        {
-            UpdateGame(sender);
-        }
-
-        private void pb7_Click(object sender, EventArgs e)
-        {
-            UpdateGame(sender);
-        }
-
-        private void pb8_Click(object sender, EventArgs e)
-        {
-            UpdateGame(sender);
-        }
-
-        private void pb9_Click(object sender, EventArgs e)
-        {
-            UpdateGame(sender);
-        }
     }
 }
